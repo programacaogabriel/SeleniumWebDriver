@@ -1,11 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import com.gargoylesoftware.htmlunit.javascript.host.Set;
 
 public class TesteGoogle {
 
@@ -21,7 +17,7 @@ public class TesteGoogle {
 		driver.get("http://www.google.com");
 		System.out.println(driver.getTitle());
 		Assert.assertEquals("Google", driver.getTitle());
-		driver.close();              //Ferra a janela aberta atualmente
+		driver.close();              //Fecha a janela aberta atualmente
 		//driver.quit();               //Mata o processo
 	}
 

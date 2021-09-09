@@ -1,15 +1,12 @@
 import java.util.List;
 
-import org.apache.bcel.generic.Select;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.*;
 
 public class TesteCampoTreinamento {
 
@@ -139,7 +136,6 @@ public class TesteCampoTreinamento {
 	}
 	
 	@Test
-	@Ignore
 	// Elementos básicos: Link
 	public void deveInteragirComLinks() {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Fire\\Drivers\\chromedriver.exe");
@@ -148,6 +144,26 @@ public class TesteCampoTreinamento {
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
 		
 		driver.findElement(By.linkText("Voltar")).click();
+		Assert.assertEquals("Voltou!",driver.findElement(By.id("resultado")).getText());
 		//Assert.fail();
+		driver.close();
 	}
-}
+	
+	@Test
+		// Elementos básicos: Div e Span
+		public void deveBuscarTextosNaPagina() {
+			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Fire\\Drivers\\chromedriver.exe");
+			WebDriver driver = new ChromeDriver();
+			driver.manage().window().setSize(new Dimension(1200, 765)); // Dimensao do Layout
+			driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+			
+			//Assert.assertTrue(driver.findElement(By.tagName("body")).getText().contains("Campo de Treinamento"));
+			Assert.assertEquals("Campo de Treinamento", driver.findElement(By.tagName("h3")).getText());
+			Assert.assertEquals("Cuidado onde clica, muitas armadilhas...",driver.findElement(By.className("facilAchar")).getText());
+			driver.close();
+	}
+	
+
+	
+	}
+
